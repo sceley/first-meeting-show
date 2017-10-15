@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html, body{
+            height: 100%;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            overflow: hidden;
+        }
+        .wrap {
+            width: 600px;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            position: absolute;
+            background-image: radial-gradient(#09eef3, #01000e);
+            width: 600px;
+            height: 600px;
+            display: flex;
+            border-radius: 100%;
+            align-items: center;
+            justify-content: center;
+            animation: rotate 5s linear infinite;
+            transition: opacity 2s linear;
+        }
+        .con-custom {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            background: red;
+            transition: opacity 2s linear;
+            transition: transform 2s linear;
+        }
+        .list {
+            width: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+        }
+        .list-2 {
+            transform: rotate(90deg);
+        }
+        .list-3 {
+            transform: rotate(135deg);
+        }
+        .list-4 {
+            transform: rotate(45deg);
+        }
+        .special-list {
+            width: 350px;
+            height: 350px;
+            border-radius: 100%;
+            background-image: radial-gradient(blue, red);
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            transition: transform 2s linear;
+        }
+        .description3 {
+            position: absolute;
+        }
+    </style>
+    <style>
+        h1, .description3 {
+            text-align:center;
+            color:#fff;
+            font-size:80px;
+            font-family: 'Fruktur', cursive;
+            text-shadow: 1px  1px 1px #ccc,
+                           0 0 10px #fff,
+                           0 0 20px #fff,
+                           0 0 30px #fff,
+                           0 0 40px #ff00de,
+                           0 0 70px #ff00de,
+                           0 0 80px #ff00de,
+                           0 0 100px #ff00de,
+                           0 0 150px #ff00de;
+                           
+            transform-style: preserve-3d;
+            animation: run 10s  ease-in-out 1s infinite;
+            transition: opacity 2s linear;
+        }
+        @keyframes run {
+            0% {
+                transform:rotateX(-5deg) rotateY(0);    
+            }
+            50% {
+                transform:rotateX(0) rotateY(180deg);   
+                 text-shadow: 1px  1px 1px #ccc,
+                           0 0 10px #fff,
+                           0 0 20px #fff,
+                           0 0 30px #fff,
+                           0 0 40px #3EFF3E,
+                           0 0 70px #3EFFff,
+                           0 0 80px #3EFFff,
+                           0 0 100px #3EFFee,
+                           0 0 150px #3EFFee;
+                         
+            }
+            100% {
+                transform:rotateX(5deg) rotateY(360deg);    
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="opacity: 0;" id="description1"></h1>
+    <div class="wrap">
+        <div id="container" class="container">
+            <div class="special-list"></div>
+            <div class="list">
+                <img src='./images/1.jpg' id="index1" class="circle"/>
+                <img src='./images/2.jpg' id="index2" class="circle"/>
+            </div>
+            <div class="list list-2">
+                <img src='./images/3.jpg' id="index3" class="circle"/>
+                <img src='./images/4.jpg' id="index4" class="circle"/>
+            </div>
+            <div class="list list-3">
+                <img src='./images/5.jpg' id="index5" class="circle"/>
+                <img src='./images/6.jpg' id="index6" class="circle"/>
+            </div>
+            <div class="list list-4">
+                <img src='./images/7.jpg' id="index7" class="circle"/>
+                <img src='./images/8.jpg' id="index8" class="circle"/>
+            </div>
+        </div>
+        <img style="opacity: 0;" id="con-custom" class="con-custom"/>
+        <div style="opacity: 0;" id="description3" class="description3"></div>
+    </div>
+    <h1 style="opacity: 0;" id="description2"></h1>
+    <script>
+        const arr1 = ['爱国敬业', '帅气迷人', '婉若游龙', '沉默寡言', '向往技术', '人高马大', '乐于助人', '笨鸟先飞'];
+        const arr2 = ['诚信友善', '臭不要脸', '噤若寒蝉', '不温不火', '追求安稳', '不修边幅', '不耻下问', '放荡不羁'];
+        const arr3 = ['张若瑜', '程文渊', '饶城洋', '卢杰', '陈鸿杰', '殷国顺', '黄子轩', '杨文旭'];
+        window.onload = function () {
+            let i = 1;
+            function choose () {
+                return document.querySelector(`#index${i}`);
+            };
+            function _rotate () {
+                let container = document.querySelector('#container');
+                let con_custom = document.querySelector('#con-custom');
+                let circle = choose();
+                con_custom.src = circle.src;
+
+                if(i % 2) {
+                    circle.style.transform = `translate(${300 - 50}px)`;
+                }
+                else {
+                    circle.style.transform = `translate(${-300 + 50}px)`;
+                }
+
+                if(i == 5) {
+                    console.log('dd');
+                    document.querySelector('#index1').src = './images/9.jpg';
+                    arr1[0] = '前端萌新';
+                    arr2[0] = '聪明机智';
+                    arr3[0] = '徐林森';
+                }
+
+                setTimeout(() => {
+                    let description1 = document.querySelector('#description1');
+                    let description2 = document.querySelector('#description2');
+                    let description3 = document.querySelector('#description3');
+                    description3.innerHTML = arr3[i - 1];
+                    description2.innerHTML = arr2[i - 1];
+                    description1.innerHTML = arr1[i - 1];
+                    container.style.opacity = 0;
+                    con_custom.style.opacity = 1;
+                    description1.style.opacity = 1;
+                    description2.style.opacity = 1;
+                    description3.style.opacity = 1;
+                    con_custom.style.transform = 'scale(5, 5)';
+                    ++i;
+                    if(i > 8) {
+                        i = 1;
+                    }
+                    setTimeout(() => {
+                        container.style.opacity = 1;
+                        con_custom.style.opacity = 0;
+                        description1.style.opacity = 0;
+                        description2.style.opacity = 0;
+                        description3.style.opacity = 0;
+                        con_custom.style.transform = 'scale(1, 1)';
+                        setTimeout(function () {
+                            circle.style.transform = `translate(0px)`;
+                        }, 2000);
+                    }, 3000);
+                }, 2000);
+            };
+            _rotate();
+            let time = setInterval(_rotate, 8000);
+        };
+    </script>
+</body>
+</html>

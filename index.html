@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+		    background:#000;
+		    }
+		  
+		h1 {
+		    text-align:center;
+		    color:#fff;
+			font-size:80px;
+		   	font-family: 'Fruktur', cursive;
+		   	text-shadow: 1px  1px 1px #ccc,
+		                  0 0 10px #fff,
+		                   0 0 20px #fff,
+		                   0 0 30px #fff,
+		                   0 0 40px #ff00de,
+		                   0 0 70px #ff00de,
+		                   0 0 80px #ff00de,
+		                   0 0 100px #ff00de,
+		                   0 0 150px #ff00de;
+						   
+			transform-style: preserve-3d;
+		    animation: run  ease-in-out 10s 1s infinite;
+		}
+
+		@keyframes run {
+		      0% {
+		        transform:rotateX(-5deg) rotateY(0);	
+		      }
+		    50% {
+		        transform:rotateX(0) rotateY(180deg);	
+				 text-shadow: 1px  1px 1px #ccc,
+		                  0 0 10px #fff,
+		                   0 0 20px #fff,
+		                   0 0 30px #fff,
+		                   0 0 40px #3EFF3E,
+		                   0 0 70px #3EFFff,
+		                   0 0 80px #3EFFff,
+		                   0 0 100px #3EFFee,
+		                   0 0 150px #3EFFee;
+		                 
+		      }
+		      100% {
+		        transform:rotateX(5deg) rotateY(360deg);	
+		      }
+		    }
+		</style>
+	</style>
+</head>
+<body>
+	<h1>Hello Web</h1>
+	<h1>技术梦想从此启航</h1>
+	<h1>携手Web技术走向明天</h1>
+	<script>
+		window.onload = function () {
+			document.onkeydown = function (e) {
+				if(e.keyCode == 13) {
+					location.href = './main.html';
+				}
+				else {
+
+				}
+			}
+		};
+	</script>
+</body>
+</html>
